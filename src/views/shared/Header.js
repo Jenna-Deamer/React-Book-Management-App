@@ -18,13 +18,18 @@ function Header() {
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav">
             <li className="nav-item">
-              <a className="nav-link" href="/about" id="about">
-                About
+              <a className="nav-link" href="/booklist" id="booklist">
+                Your List
               </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/details" id="details">
-                Details
+              <a className="nav-link" href="/search" id="search">
+                Search
+              </a>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link" href="/settings" id="settings">
+                Settings
               </a>
             </li>
           </ul>
