@@ -5,14 +5,15 @@ function Home() {
   const [books, setBooks] = useState([]);
   const [errorMessage, setErrorMessage] = useState(null);
 
-  //Manage userBook list stored in locale storage. Set empty by default
+  //Manage userBook list stored in local storage. Set empty by default
   const [bookList, setBookList] = useState([]);
 
-  //retrive bookList from locale storage on render.
+  //retrieve bookList from local storage on render.
   useEffect(() => {
-    //locale storage is storing json data as strings, convert json string back to object
+    //local storage is storing json data as strings, convert json string back to object
     //if the bookList is null [] it results in error. Default to empty array if null
     const storedBookList = JSON.parse(localStorage.getItem("session")) || [];
+    console.log("Stored Book List:", storedBookList);
     setBookList(storedBookList);
   }, []); //[] make this run once.
 
@@ -34,17 +35,17 @@ function Home() {
     } else {
       console.log("book is not in list");
       //append the bookList & new book to new var to keep track
-      const updatedBookList = [bookList, selectedBook];
+      const updatedBookList = [...bookList, selectedBook];
       //update state with new list
-      setBookList(updatedBookList);
+      console.log("Updated Book List:", updatedBookList);
       console.log(bookList);
+      setBookList(updatedBookList);
 
-      //update locale storage to persist the list by storing json object as a string
+      //update local storage to persist the list by storing json object as a string
       localStorage.setItem("session", JSON.stringify(updatedBookList));
+      console.log(bookList);
     }
   };
-
-  console.log(bookList);
 
   //Google Book API docs. https://developers.google.com/books/docs/v1/using
   useEffect(() => {
@@ -71,14 +72,14 @@ function Home() {
         //retrieve only title, author and thumbnail instead of everything
         const formattedBookData = data.items.map((books) => ({
           title: books.volumeInfo.title,
-          //returns an array of authors with commas separating names, since some books have multiple
+          //returns an array of authors since some books have multiple
           author: books.volumeInfo.authors,
           //returns a small thumbnail and regular sized thumbnail.
           coverImg: books.volumeInfo.imageLinks,
         }));
         //set stateHook
         setBooks(formattedBookData);
-        console.log(formattedBookData);
+        // console.log(formattedBookData);
       } catch (error) {
         console.log(`error: ${error}`);
         setErrorMessage(error);
@@ -92,8 +93,8 @@ function Home() {
       <h1 className="pt-4 text-center">Welcome, Browse Books Below</h1>
       <h2 className="text-center pt-4">History</h2>
       {/**Display Fetched books in cards by mapping through all book objects & putting their data into the card structure below
-       * Each card also has a button to add to list. Add selection to bookList & store in locale storage.
-       * Display the list on home * bookList.js
+       * Each card also has a button to add to list. Add selection to bookList & store in local storage.
+       * Display the list on home & bookList.js
        */}
       <div className="container">
         <div className="row">
@@ -116,21 +117,21 @@ function Home() {
         </div>
       </div>
       {/* <h2 className="text-center pt-4">Fantasy</h2>
-      <div className="container">
-        <div className="row">
-          {books.map((book, index) => (
-            <div
-              className="bookCard col-lg-4 col-md-4 col-sm-6 mb-4"
-              key={index}
-            >
-              <h5>{book.title}</h5>
-              <img src={book.coverImg.thumbnail} alt={book.title}></img>
-              <p className="mt-2">By: {book.author}</p>
-              <button className="btn btn-info">Add to List</button>
-            </div>
-          ))}
-        </div>
-      </div> */}
+	  <div className="container">
+		<div className="row">
+		  {books.map((book, index) => (
+			<div
+			  className="bookCard col-lg-4 col-md-4 col-sm-6 mb-4"
+			  key={index}
+			>
+			  <h5>{book.title}</h5>
+			  <img src={book.coverImg.thumbnail} alt={book.title}></img>
+			  <p className="mt-2">By: {book.author}</p>
+			  <button className="btn btn-info">Add to List</button>
+			</div>
+		  ))}
+		</div>
+	  </div> */}
       <h2 className="text-center pt-4">Your List</h2>
       {bookList.map((book, index) => (
         <div className="bookCard" key={index}>
