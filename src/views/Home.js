@@ -1,21 +1,9 @@
 import { useState, useEffect } from "react";
 
-function Home() {
+function Home({bookList, updateBookList }) {
   // var to hold the api data
   const [books, setBooks] = useState([]);
   const [errorMessage, setErrorMessage] = useState(null);
-
-  //Manage userBook list stored in local storage. Set empty by default
-  const [bookList, setBookList] = useState([]);
-
-  //retrieve bookList from local storage on render.
-  useEffect(() => {
-    //local storage is storing json data as strings, convert json string back to object
-    //if the bookList is null [] it results in error. Default to empty array if null
-    const storedBookList = JSON.parse(localStorage.getItem("session")) || [];
-    console.log("Stored Book List:", storedBookList);
-    setBookList(storedBookList);
-  }, []); //[] make this run once.
 
   //add selected book to bookList when btn is clicked
   const addToBookList = (selectedBook) => {
@@ -28,22 +16,12 @@ function Home() {
         break;
       }
     }
-    //if isBookInList true, alert the user that the book they selected is already in their list.
     if (isBookInList) {
-      alert(`You already have this book in your list!`);
-      //if isBookInList is not true then there is no match. Append the new book to their list.
+      alert("You already have this book in your list!");
     } else {
-      console.log("book is not in list");
-      //append the bookList & new book to new var to keep track
-      const updatedBookList = [...bookList, selectedBook];
-      //update state with new list
-      console.log("Updated Book List:", updatedBookList);
-      console.log(bookList);
-      setBookList(updatedBookList);
-
-      //update local storage to persist the list by storing json object as a string
-      localStorage.setItem("session", JSON.stringify(updatedBookList));
-      console.log(bookList);
+      const updatedList = [...bookList, selectedBook]; // Create a new array and append selected book & current bookList
+      updateBookList(updatedList); // Update the bookList in the app.js 
+      localStorage.setItem("session", JSON.stringify(updatedList)); // Store updated list as json string in local storage
     }
   };
 
