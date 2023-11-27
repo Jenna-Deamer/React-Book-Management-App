@@ -46,7 +46,7 @@ function App() {
               path="/booklist"
               element={<Booklist bookList={bookList}  updateBookList={updateBookList}/>}
             />
-            <Route path="/search" element={<Search />} />
+            <Route path="/search" element={<Search bookList={bookList}  updateBookList={updateBookList} />} />
             <Route path="/settings" element={<Settings />} />
           </Routes>
         </section>
