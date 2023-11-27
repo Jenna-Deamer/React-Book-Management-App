@@ -36,14 +36,14 @@ function Search({ bookList, updateBookList }) {
             ? books.volumeInfo.imageLinks
             : "https://fakeimg.pl/125x200?text=Cover+Missing",
         }));
-        //set stateHook
+        //set books state
         setBooks(formattedBookData);
-        // console.log(formattedBookData);
+
       } catch (error) {
         console.log(`error: ${error}`);
       }
       // Clear books if the search term is empty
-      if (searchTerm === "") {
+      if (searchTerm === '') {
         setBooks([]);
       }
     };
@@ -56,15 +56,33 @@ function Search({ bookList, updateBookList }) {
     setSearchTerm(event.target.value);
   };
 
+    //add selected book to bookList when btn is clicked
+    const addToBookList = (selectedBook) => {
+      let isBookInList = false;
+      
+      for (let i = 0; i < bookList.length; i++) {
+        if (bookList[i].title === selectedBook.title) {
+          isBookInList = true;
+          break;
+        }
+      }
+      if (isBookInList) {
+        alert("You already have this book in your list!");
+      } else {
+        const updatedList = [...bookList, selectedBook]; // Create a new array and append selected book & current bookList
+        updateBookList(updatedList); // Update the bookList in the app.js 
+        localStorage.setItem("session", JSON.stringify(updatedList)); // Store updated list as json string in local storage
+      }
+    };
+
   return (
     <main className="container">
       <h1 className="pt-4 text-center">Search by Title</h1>
 
       <fieldset>
-        <label htmlFor="title">Title</label>
         <input
           type="text"
-          placeholder="Search books..."
+          placeholder="Type to start searching..."
           value={searchTerm}
           onChange={handleInputChange}
         />
@@ -82,7 +100,7 @@ function Search({ bookList, updateBookList }) {
               <p className="mt-2">By: {book.author}</p>
               <button
                 className="btn btn-info"
-                // onClick={() => addToBookList(book)}
+                onClick={() => addToBookList(book)}
               >
                 <i class="bi bi-plus"></i> Add to List
               </button>

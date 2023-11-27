@@ -1,7 +1,12 @@
 .contentWrapper{
   background-color: aliceblue;
+
+
 }
 
+body{
+
+}
 /*Book Cards*/
 
 .bookCard > img{
@@ -11,8 +16,8 @@
 
 }
 
-
 footer{
   background-color: grey;
   color: #fff;
+  
 }
