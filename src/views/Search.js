@@ -78,14 +78,19 @@ function Search({ bookList, updateBookList }) {
     <main className="container">
       <h1 className="pt-4 text-center">Search by Title</h1>
 
-      <fieldset>
-        <input
-          type="text"
-          placeholder="Type to start searching..."
-          value={searchTerm}
-          onChange={handleInputChange}
-        />
-      </fieldset>
+      <div className="row justify-content-center"> 
+      <div className="col-lg-6 col-md-8 col-sm-10"> 
+        <fieldset className="pt-4 pb-4">
+          <input
+            className="form-control"
+            type="text"
+            placeholder="Start typing here to search..."
+            value={searchTerm}
+            onChange={handleInputChange}
+          />
+        </fieldset>
+      </div>
+    </div>
 
       <div className="container">
         <div className="row">
@@ -98,7 +103,7 @@ function Search({ bookList, updateBookList }) {
               <img src={book.coverImg.thumbnail} alt={book.title}></img>
               <p className="mt-2">By: {book.author}</p>
               <button
-                className="btn btn-info"
+                className="customBtn"
                 onClick={() => addToBookList(book)}
               >
                 <i class="bi bi-plus"></i> Add to List

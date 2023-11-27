@@ -85,7 +85,7 @@ function Home({bookList, updateBookList }) {
               <img src={book.coverImg.thumbnail} alt={book.title}></img>
               <p className="mt-2">By: {book.author}</p>
               <button
-                className="btn btn-info"
+                className="customBtn"
                 onClick={() => addToBookList(book)}
               >
                 <i class="bi bi-plus"></i> Add to List
@@ -94,22 +94,7 @@ function Home({bookList, updateBookList }) {
           ))}
         </div>
       </div>
-      {/* <h2 className="text-center pt-4">Fantasy</h2>
-	  <div className="container">
-		<div className="row">
-		  {books.map((book, index) => (
-			<div
-			  className="bookCard col-lg-4 col-md-4 col-sm-6 mb-4"
-			  key={index}
-			>
-			  <h5>{book.title}</h5>
-			  <img src={book.coverImg.thumbnail} alt={book.title}></img>
-			  <p className="mt-2">By: {book.author}</p>
-			  <button className="btn btn-info">Add to List</button>
-			</div>
-		  ))}
-		</div>
-	  </div> */}
+      
       <h2 className="text-center pt-4">Your List</h2>
       <div className="container">
         <div className="row">
@@ -122,7 +107,7 @@ function Home({bookList, updateBookList }) {
         </div>
       ))}
       </div>
-      <button className="btn btn-info text-center">View Whole List</button>
+      <button className="customBtn mb-2"><i class="bi bi-journal-bookmark-fill"></i> View All</button>
       </div>
       
     </main>

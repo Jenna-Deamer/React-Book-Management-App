@@ -1,8 +1,8 @@
 function Header() {
     return (
-      <nav className="navbar navbar-expand-lg navbar-light shadow">
+      <nav className="navbar navbar-expand-lg navbar-dark shadow">
         <a className="navbar-brand mx-4" href="/" id="home">
-          Book Thing
+        <i class="bi bi-book-fill"></i> Book Library
         </a>
         <button
           className="navbar-toggler"
@@ -19,17 +19,17 @@ function Header() {
           <ul className="navbar-nav">
             <li className="nav-item">
               <a className="nav-link" href="/booklist" id="booklist">
-                Your List
+              <i class="bi bi-bookmark-fill"></i> Your List
               </a>
             </li>
             <li className="nav-item">
               <a className="nav-link" href="/search" id="search">
-                Search
+              <i class="bi bi-search"></i> Search
               </a>
             </li>
             <li className="nav-item">
               <a className="nav-link" href="/settings" id="settings">
-                Settings
+              <i class="bi bi-gear-fill"></i> Settings
               </a>
             </li>
           </ul>

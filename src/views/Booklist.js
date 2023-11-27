@@ -31,7 +31,7 @@ const deleteSelectedBook = (selectedBook) =>{
       ))}
        </div>
         </div>
-            <button className="btn btn-primary">Add New</button>
+            <button className="customBtn"> <i class="bi bi-search"></i> Search for New Books</button>
         </main>
     )
 }
