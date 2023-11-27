@@ -111,14 +111,20 @@ function Home({bookList, updateBookList }) {
 		</div>
 	  </div> */}
       <h2 className="text-center pt-4">Your List</h2>
-      {bookList.map((book, index) => (
-        <div className="bookCard" key={index}>
+      <div className="container">
+        <div className="row">
+          {/**Display Only 3 books from user list. View More button  */}
+      {bookList.slice(0,3).map((book, index) => (
+        <div className="bookCard col-lg-4 col-md-4 col-sm-6 mb-4 text-center" key={index}>
           <h5>{book.title}</h5>
           <img src={book.coverImg.thumbnail} alt={book.title}></img>
           <p className="mt-2">By: {book.author}</p>
         </div>
       ))}
-      <button className="btn btn-info">View Whole List</button>
+      </div>
+      <button className="btn btn-info text-center">View Whole List</button>
+      </div>
+      
     </main>
   );
 }
