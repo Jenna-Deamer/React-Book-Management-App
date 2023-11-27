@@ -31,7 +31,10 @@ function Search({ bookList, updateBookList }) {
         const formattedBookData = data.items.map((books) => ({
           title: books.volumeInfo.title,
           author: books.volumeInfo.authors,
-          coverImg: books.volumeInfo.imageLinks,
+          //set img to what is found in json, if img is null set to placeholder generated from betterPlaceholder.com
+          coverImg: books.volumeInfo.imageLinks
+            ? books.volumeInfo.imageLinks
+            : "https://fakeimg.pl/125x200?text=Cover+Missing",
         }));
         //set stateHook
         setBooks(formattedBookData);
@@ -39,10 +42,14 @@ function Search({ bookList, updateBookList }) {
       } catch (error) {
         console.log(`error: ${error}`);
       }
+      // Clear books if the search term is empty
+      if (searchTerm === "") {
+        setBooks([]);
+      }
     };
 
     fetchBooks();
-  }, [searchTerm]); //run every time searchTerm changes. 
+  }, [searchTerm]); //run every time searchTerm changes.
 
   //track changes on textInput
   const handleInputChange = (event) => {
@@ -52,17 +59,17 @@ function Search({ bookList, updateBookList }) {
   return (
     <main className="container">
       <h1 className="pt-4 text-center">Search by Title</h1>
-      <form>
-        <fieldset>
-          <label htmlFor="title">Title</label>
-          <input
-            type="text"
-            placeholder="Search books..."
-            value={searchTerm}
-            onChange={handleInputChange}
-          />
-        </fieldset>
-      </form>
+
+      <fieldset>
+        <label htmlFor="title">Title</label>
+        <input
+          type="text"
+          placeholder="Search books..."
+          value={searchTerm}
+          onChange={handleInputChange}
+        />
+      </fieldset>
+
       <div className="container">
         <div className="row">
           {books.map((book, index) => (
@@ -83,7 +90,6 @@ function Search({ bookList, updateBookList }) {
           ))}
         </div>
       </div>
-      
     </main>
   );
 }
