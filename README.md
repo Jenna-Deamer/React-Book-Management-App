@@ -1,15 +1,17 @@
-Book Libary - 2023 
-A react app that allows users to search, add and remove books from their book list. All book data is fetched from Google Book API. 
+# Book Library - 2023
 
-Live Demo - https://bookapp-1pa2.onrender.com/ 
--**Note:** If books are not displaying on home or in the search panel, please try again later, as Google Book API only allows so many requests a day.
- 
-#Features
--**Browse Books:** Explore books on the home page by category fetched from Google Books API. 
--**Add to Reading List:** Easily add books to your personal book list from the home page or the search page. The book list cannot hold duplicates and will alert if the book the user attempted to add is already on their list.
--**Remove from Reading List:** Easily remove any book from the book list page by clicking the red "X" button. 
--**Search:** Search the Google Book API by title. 
--**Settings:** Toggle dark mode for a darker theme.
+A React app that enables users to search, add, and remove books from their personal book list. All book data is fetched from the Google Book API.
+
+Live Demo: [Book Library Demo](https://bookapp-1pa2.onrender.com/) 
+(If books don't display on the home or search page, try again later as Google Book API has daily request limits.)
+
+## Features
+
+- **Browse Books:** Explore books on the home page by category fetched from Google Books API. 
+- **Add to Reading List:** Easily add books to your personal list from the home or search page. The book list prevents duplicates and notifies users if they attempt to add an existing book.
+- **Remove from Reading List:** Remove any book from the list by clicking the red "X" button on the book list page.
+- **Search:** Search the Google Book API by title.
+- **Settings:** Toggle dark mode for a darker theme.
 
 ##Technologies Used
 - **React:** Front-end library for building the user interface.
