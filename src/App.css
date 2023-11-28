@@ -6,26 +6,36 @@
   --secondary: #8C634A;
   --accent: #3F858C;
   --white: #fff;
-  /* --The-Last-Chapter-3-hex: #A68365;
-  --The-Last-Chapter-4-hex: #D9BCA3; */
-
+  --darkBackground: #202022;
 }
+
 nav {
   background-color: var(--secondary);
 }
-body{
-  font-family: 'Poppins', sans-serif;
-
-}
-h1,h2,h3{
-  font-family: 'Quicksand', sans-serif;
-}
-.contentWrapper {
+.contentWrapper{
   background-color: var(--primary);
   min-height: 100vh;
+  font-family: 'Poppins', sans-serif;
+  padding-bottom: 2em;
 }
-
-
+.contentWrapper.darkTheme{
+  color: var(--white);
+  background-color: var(--darkBackground);
+}
+/* .contentWrapper {
+  background-color: var(--primary);
+  min-height: 100vh;
+  font-family: 'Poppins', sans-serif;
+} */
+/* .contentWrapper.darkTheme{
+  color: var(--white);
+  background-color: var(--darkBackground);
+} */
+h1,
+h2,
+h3 {
+  font-family: 'Quicksand', sans-serif;
+}
 
 /*Book Cards*/
 .bookCard>img {
@@ -39,9 +49,9 @@ h1,h2,h3{
   background-color: var(--accent);
   padding: 8px;
   border-radius: 8px;
-  color: var(--white)
+  color: var(--white);
+  text-decoration: none;
 }
-
 .customBtn:hover {
   transition: .5s;
   background-color: #58bec7;
@@ -49,5 +59,8 @@ h1,h2,h3{
 
 footer {
   background-color: var(--secondary);
-  color: var(--white)
+  color: var(--white);
+}
+footer a{
+  color:#58bec7;
 }

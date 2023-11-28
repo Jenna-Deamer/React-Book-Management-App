@@ -107,7 +107,7 @@ function Home({bookList, updateBookList }) {
         </div>
       ))}
       </div>
-      <button className="customBtn mb-2"><i class="bi bi-journal-bookmark-fill"></i> View All</button>
+      <a href="/bookList" className="customBtn mb-2"><i class="bi bi-journal-bookmark-fill"></i> View All</a>
       </div>
       
     </main>
