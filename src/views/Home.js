@@ -30,7 +30,9 @@ function Home({bookList, updateBookList }) {
     const fetchBooks = async (data) => {
       try {
         //api key from google book api
-        const apiKey = "AIzaSyDBPaqAUVP3097fwDVUFdB0ssLIvSqSSdk";
+        const apiKey = process.env.REACT_APP_MY_API_KEY;
+        //fetched from the environment variable
+        
         //access google book api and get max6 results from history category
         const response = await fetch(
           `https://www.googleapis.com/books/v1/volumes?q=history&maxResults=6&key=${apiKey}`,
