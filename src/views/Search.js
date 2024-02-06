@@ -29,7 +29,7 @@ function Search({ bookList, updateBookList }) {
         const data = await response.json();
         //retrieve title, authors, img
         const formattedBookData = data.items.map((books) => ({
-          title: books.volumeInfo.title,
+          title: books.volumeInfo.title > 30 ? books.volumeInfo.title.subString(0, 30) + "..." : books.volumeInfo.title,
           author: books.volumeInfo.authors,
           //set img to what is found in json, if img is null set to placeholder generated from betterPlaceholder.com
           coverImg: books.volumeInfo.imageLinks
@@ -78,19 +78,19 @@ function Search({ bookList, updateBookList }) {
     <main className="container">
       <h1 className="pt-4 text-center">Search by Title</h1>
 
-      <div className="row justify-content-center"> 
-      <div className="col-lg-6 col-md-8 col-sm-10"> 
-        <fieldset className="pt-4 pb-4">
-          <input
-            className="form-control"
-            type="text"
-            placeholder="Start typing here to search..."
-            value={searchTerm}
-            onChange={handleInputChange}
-          />
-        </fieldset>
+      <div className="row justify-content-center">
+        <div className="col-lg-6 col-md-8 col-sm-10">
+          <fieldset className="pt-4 pb-4">
+            <input
+              className="form-control"
+              type="text"
+              placeholder="Start typing here to search..."
+              value={searchTerm}
+              onChange={handleInputChange}
+            />
+          </fieldset>
+        </div>
       </div>
-    </div>
 
       <div className="container">
         <div className="row">
