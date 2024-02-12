@@ -29,7 +29,7 @@ function Search({ bookList, updateBookList }) {
         const data = await response.json();
         //retrieve title, authors, img
         const formattedBookData = data.items.map((books) => ({
-          title: books.volumeInfo.title > 30 ? books.volumeInfo.title.subString(0, 30) + "..." : books.volumeInfo.title,
+          title: books.volumeInfo.title.length > 50 ? books.volumeInfo.title.substring(0, 50) + "..." : books.volumeInfo.title,
           author: books.volumeInfo.authors,
           //set img to what is found in json, if img is null set to placeholder generated from betterPlaceholder.com
           coverImg: books.volumeInfo.imageLinks

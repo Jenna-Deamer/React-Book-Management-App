@@ -64,7 +64,7 @@ function Home({bookList, updateBookList }) {
         const data = await response.json();
         //retrieve only title, author and thumbnail instead of everything
         const formattedBookData = data.items.map((books) => ({
-          title: books.volumeInfo.title,
+          title: books.volumeInfo.title > 30 ? books.volumeInfo.title.subString(0, 30) + "..." : books.volumeInfo.title,
           //returns an array of authors since some books have multiple
           author: books.volumeInfo.authors,
           //returns a small thumbnail and regular sized thumbnail.
