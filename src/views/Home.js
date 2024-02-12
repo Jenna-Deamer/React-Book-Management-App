@@ -25,8 +25,21 @@ function Home({bookList, updateBookList }) {
     }
   };
 
-  //Google Book API docs. https://developers.google.com/books/docs/v1/using
+  
   useEffect(() => {
+    //cache books to limit re-fetching of the same books
+    const cachedBooks = localStorage.getItem("cachedBooks");
+    //check if books are arcady cached
+    if(cachedBooks){
+      setBooks(JSON.parse(cachedBooks));
+    }
+    else{
+      //fetch books from API if not cached
+      fetchBooks();
+    }
+  },[]);
+
+//Google Book API docs. https://developers.google.com/books/docs/v1/using
     const fetchBooks = async (data) => {
       try {
         //api key from google book api
@@ -55,7 +68,9 @@ function Home({bookList, updateBookList }) {
           //returns an array of authors since some books have multiple
           author: books.volumeInfo.authors,
           //returns a small thumbnail and regular sized thumbnail.
-          coverImg: books.volumeInfo.imageLinks,
+          coverImg: books.volumeInfo.imageLinks
+            ? books.volumeInfo.imageLinks
+            : "https://fakeimg.pl/125x200?text=Cover+Missing",
         }));
         //set stateHook
         setBooks(formattedBookData);
@@ -65,8 +80,8 @@ function Home({bookList, updateBookList }) {
         setErrorMessage(error);
       }
     };
-    fetchBooks();
-  }, []);
+
+
 
   return (
     <main>
