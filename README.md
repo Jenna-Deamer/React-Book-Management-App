@@ -1,4 +1,4 @@
-Book Libary - 2023 
+Book Management App - 2023 
 A react app that allows users to search, add and remove books from their own book list. All book data is fetched from Google Book API. 
 
 Live Demo - [Book Management Application](https://book-management-application-jenna-deamers-projects.vercel.app/)
